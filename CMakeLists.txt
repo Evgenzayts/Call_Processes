@@ -45,12 +45,11 @@ find_package(BoostProcess CONFIG REQUIRED)
 
 add_library(${PROJECT_NAME} STATIC
         # enum your files and delete this comment
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/example.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/sources/builder.cpp
         )
 
-add_executable(demo
-        ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/sources/example.cpp
+add_executable(builder
+        ${CMAKE_CURRENT_SOURCE_DIR}/builder/main.cpp
         )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
@@ -58,7 +57,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
         "$<INSTALL_INTERFACE:include>"
         )
 
-target_link_libraries(demo ${PROJECT_NAME})
+target_link_libraries(builder ${PROJECT_NAME})
 target_link_libraries(${PROJECT_NAME}
         Async++::Async++
         Boost::program_options
@@ -75,7 +74,7 @@ target_link_libraries(${PROJECT_NAME}
 if(BUILD_TESTS)
     add_executable(tests
             # TODO: enum your files and delete this comment
-            ${CMAKE_CURRENT_SOURCE_DIR}/tests/example.cpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/tests/tests.cpp
             )
     target_link_libraries(tests ${PROJECT_NAME} GTest::gtest_main)
     enable_testing()
@@ -105,7 +104,7 @@ endif()
 
 include(CPackConfig.cmake)
 
-install(TARGETS ${PROJECT_NAME} demo
+install(TARGETS ${PROJECT_NAME} builder
         EXPORT "${PROJECT_NAME}-targets"
         RUNTIME DESTINATION bin
         ARCHIVE DESTINATION lib

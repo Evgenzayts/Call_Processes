@@ -9,8 +9,8 @@
 Исполняемый файл программы должен иметь название **builder** и поддерживать следующие опции запуска:
 
 ```Shell
-$ ./demo --help
-Usage: demo [options]
+$ ./builder --help
+Usage: builder [options]
 Allowed options:
   --help                    : выводим вспомогательное сообщение
   --config <Release|Debug>  : указываем конфигурацию сборки (по умолчанию Debug)
@@ -22,14 +22,14 @@ Allowed options:
 Примеры запуска программы с описанием эквивалентных запусков процессов программы **CMake**.
 
 ```Shell
-$ ./demo
+$ ./builder
 <=>
 $ cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=_install -DCMAKE_BUILD_TYPE=Debug
 $ cmake --build _builds
 ```
 
 ```Shell
-$ ./demo --config Release
+$ ./builder --config Release
 <=>
 $ cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=_install -DCMAKE_BUILD_TYPE=Release
 $ cmake --build _builds
@@ -37,7 +37,7 @@ $ cmake --build _builds
 
 
 ```Shell
-$ ./demo --install
+$ ./builder --install
 <=>
 $ cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=_install -DCMAKE_BUILD_TYPE=Debug
 $ cmake --build _builds
@@ -45,7 +45,7 @@ $ cmake --build _builds --target install
 ```
 
 ```Shell
-$ ./demo --pack
+$ ./builder --pack
 <=>
 $ cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=_install -DCMAKE_BUILD_TYPE=Debug
 $ cmake --build _builds
@@ -53,7 +53,7 @@ $ cmake --build _builds --target package
 ```
 
 ```Shell
-$ ./demo --install --pack
+$ ./builder --install --pack
 <=>
 $ cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=_install -DCMAKE_BUILD_TYPE=Debug
 $ cmake --build _builds
@@ -62,7 +62,7 @@ $ cmake --build _builds --target package
 ```
 
 ```Shell
-$ ./demo --timeout 500
+$ ./builder --timeout 500
 <=>
 $ cmake -H. -B_builds -DCMAKE_INSTALL_PREFIX=_install -DCMAKE_BUILD_TYPE=Debug
 $ cmake --build _builds
